@@ -19,3 +19,19 @@ and **Population data** through Azure Blob storage.
 >**Linked Service:** ls_(ablob/adls)_storagename\
 >**Data Set:** ds_datatype_folder\
 >**Pipeline:** pl_function
+
+## **Creating Azure Resources:**
+### **Create Azure data Factory:**
+>Create Azure Data Factory : covid19-sudhanshu-adf  (give meaningful name)
+
+### **Create Azure Blob Storage:**
+>Create Azure Blob Storage: sudhanshucovid19 (give meaningful name, Small case) \
+>search storage account > give subscription and resource group > create
+
+### **Create Azure Data Lake Storage Gen2:**
+>same as we created storage account.
+
+> [!CAUTION]
+>Just make sure to check Enable hierarchical namespace (under advanced)  this time.
+
+![adls](Screenshots/adls.png)
