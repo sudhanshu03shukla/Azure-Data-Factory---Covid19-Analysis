@@ -44,3 +44,20 @@ and **Population data** through Azure Blob storage.
 
 
 ![storage_exp](Screenshots/storage_explorer.png)
+
+### **Create Azure SQL Database:**
+>Azure SQL databse > create > Db name : covid19-db > server : create new > give unique name
+
+>Use SQL authentication > give admin name and password
+
+give these settings:
+
+![sql_db](Screenshots/sql_db.png)
+
+> [!NOTE]
+> select Locally-redundant backup storage.
+
+Networking:
+give these settings:
+
+![sql_db2](Screenshots/sql_db2.png)
