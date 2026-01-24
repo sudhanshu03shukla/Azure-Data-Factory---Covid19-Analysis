@@ -35,3 +35,12 @@ and **Population data** through Azure Blob storage.
 >Just make sure to check Enable hierarchical namespace (under advanced)  this time.
 
 ![adls](Screenshots/adls.png)
+
+### **Download storage Explorer:** 
+>storage account > storage browser > download Azure Storage Explorer
+
+**Login:**
+>Azure portal > users > copy user principal name > and use this as login id to login
+
+
+![storage_exp](Screenshots/storage_explorer.png)
