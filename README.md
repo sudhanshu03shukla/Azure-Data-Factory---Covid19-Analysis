@@ -1,1 +1,21 @@
 # Azure-Data-Factory---Covid19-Analysis
+
+## **Introduction:**
+This project focuses on building an end-to-end data engineering pipeline to analyze COVID-19 data across Europe. \
+Azure Data Factory is used for automated data ingestion, while Azure Databricks, HDInsight and Data Flows handle scalable data transformation and processing. \
+Azure Blob Storage and Azure Data Lake Gen2 provide reliable storage for raw and curated data. \
+The processed data is published to Azure SQL Database and visualized through interactive Power BI reports to enable data-driven insights.
+
+## **Project Architecture:**
+
+![project_architecture](Screenshots/Project_architecure.png)
+
+## **Dataset:** 
+We are using data from **European Centre for Disease Prevention and Control** through HTTP connector 
+and **Population data** through Azure Blob storage.
+
+## **Good Practices:**
+### **Naming Conventions :**
+>**Linked Service:** ls_(ablob/adls)_storagename\
+>**Data Set:** ds_datatype_folder\
+>**Pipeline:** pl_function
