@@ -61,3 +61,10 @@ Networking:
 give these settings:
 
 ![sql_db2](Screenshots/sql_db2.png)
+
+### **Create a dashboard:**
+>Azure Data Factory > Pin > Pin to dashboard > create new > Covid Reporting Dashboard
+
+**pin all resources in the dashboard.**
+
+![dashboard](Screenshots/dashboard1.png)
