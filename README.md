@@ -12,7 +12,11 @@ The processed data is published to Azure SQL Database and visualized through int
 
 ## **Dataset:** 
 We are using data from **European Centre for Disease Prevention and Control** through HTTP connector 
-and **Population data** through Azure Blob storage.
+and **Population data** through Azure Blob storage.\
+We can get the ECDC data from the below link :
+
+    https://www.ecdc.europa.eu/en/covid-19/data
+
 
 ## **Good Practices:**
 ### **Naming Conventions :**
