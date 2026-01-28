@@ -2,7 +2,7 @@
 
 ## **Introduction:**
 This project focuses on building an end-to-end data engineering pipeline to analyze COVID-19 data across Europe. \
-Azure Data Factory is used for automated data ingestion, while Azure Databricks, HDInsight and Data Flows handle scalable data transformation and processing. \
+Azure Data Factory is used for automated data ingestion, while Azure Databricks and Data Flows handle scalable data transformation and processing. \
 Azure Blob Storage and Azure Data Lake Gen2 provide reliable storage for raw and curated data. \
 The processed data is published to Azure SQL Database and visualized through interactive Power BI reports to enable data-driven insights.
 
