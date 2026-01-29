@@ -146,6 +146,17 @@ Give this File as Input to Lookup Activity\
 - **Complete Pipeline (pl_ingest_ecdc_data):**
 
   ![pl_ingest_ecdc_data](Screenshots/pl_ingest_ecdc_data.png)
+
+## **Data Transformation:**
+### **Transformation of Cases and Deaths:**
+#### **Transformation Requirements:**
+1. Filter Data for **Europe** only.
+2. Remove columns : continent, rate_14_day
+3. Split indicator column (take indicator and daily_count column and pivot them in cases_count and deaths_count)
+4. Get country_code_2_digit and country_code_2_digit from the lookup file.
+
+We will perform all the above transformation using **Data Flow**.
+
     
 
       
