@@ -32,6 +32,9 @@ We can get the ECDC data from the below link :
 >Create Azure Blob Storage: sudhanshucovid19 (give meaningful name, Small case) \
 >search storage account > give subscription and resource group > create
 
+### **Create Azure Databricks Workspace:**
+>search Azure databricks > give subscription and resource group > create
+
 ### **Create Azure Data Lake Storage Gen2:**
 >same as we created storage account.
 
@@ -71,7 +74,7 @@ give these settings:
 
 **pin all resources in the dashboard.**
 
-![dashboard](Screenshots/dashboard1.png)
+![dashboard](Screenshots/covid_dashboard.png)
 
 ## **Creating Containors for Data Loading:**
 - **Create Azure Blob Storage Containors:**\
