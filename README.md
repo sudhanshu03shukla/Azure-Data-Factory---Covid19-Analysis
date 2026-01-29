@@ -72,3 +72,53 @@ give these settings:
 **pin all resources in the dashboard.**
 
 ![dashboard](Screenshots/dashboard1.png)
+
+## **Creating Containors for Data Loading:**
+- **Create Azure Blob Storage Containors:**\
+  Create the containor : population\
+  Storage account > storage browser > Blob container > Add > population \
+  and upload the below file:\
+  [population_by_age.tsv.gz](covid19_data_sets/population_data)
+- **Create ADLS Gen2 Containors:**\
+  Same as above create : raw
+
+## **Data Ingestion:**
+### **Create Pipeline to Ingest Population Data (pl_ingest_population_data):** 
+- **Validation Activity:**\
+  Check if the file : **population_by_age.tsv.gz** exists on the specific location\
+- **Get Metadata Activity:**\
+  Get column count for the input file.
+- **If Condition Activity:**\
+  Check the Count value from the metadata activity and match:
+
+      @equals(activity('Get File Metadata').output.columnCount,13)
+  If the match is:
+  + **True:**
+    * Copy Population Data_copy (Copy Acivity):
+      - Copy the data to Sink (ADLS Gen2 Containor - raw)
+    * Delete Activity:
+      - On copy success delete the file from source.
+   + **False:**
+     * Fail Activity:
+       - Raise error message (File Incompatible)\
+
+Here is the complete pipeline:
+![pl_ingest_population_data.png](Screenshots/pl_ingest_population_data.png)
+
+> [!WARNING]
+> Publish the pipelines and Data sets ASAP, otherwise all changes will be lost.
+
+- **Create Trigger (tr_se_pl_ingest_population_data):**\
+  Create Event based trigger and attach the above pipeline in that.\
+  Execute the trigger:
+  ![Trigger_pipeline](Screenshots/pipeline_success1.png)
+  
+
+      
+  
+  
+  
+
+
+
+
