@@ -155,7 +155,40 @@ Give this File as Input to Lookup Activity\
 3. Split indicator column (take indicator and daily_count column and pivot them in cases_count and deaths_count)
 4. Get country_code_2_digit and country_code_2_digit from the lookup file.
 
-We will perform all the above transformation using **Data Flow**.
+We will perform all the above transformation using **Data Flow:** df_transform_cases_deaths.
+
+#### **Data Flow Transformation Steps:**
+1. Select the cases_deaths file as source:
+
+        raw/ecdc/cases_deaths/cases_death.csv
+2. Filter the data only for **Europe**. Put this command in the Filter transformation
+
+       continent == 'Europe' && not(isNull(country_code))
+3. Select transformation to select only the required columns.
+4. Split indicator column (take indicator and daily_count column and pivot them in cases_count and deaths_count).\
+   - Select Pivot transformation. 
+   - Give Pivot Key as:
+     
+       ![pivot_key1](Screenshots/pivot_key1.png)
+     
+   - Give Pivoted Columns as:
+     
+       ![pivoted_columns2](Screenshots/pivoted_columns2.png)
+   - Other then Pivot Key and Pivoted Columns keep all the columns in group by.
+5. Get country_code_2_digit and country_code_2_digit from the lookup file.
+   - Create one more source of this lookup file : [country_lookup.csv](Lookup_Files/country_lookup.csv)
+   - Do Lookup on Country column.
+6. After Lookup actvity remove the duplicate columns using Select activity.
+7. Create a Sink transformation. Create the Sink on this path:
+
+       processed/ecdc/cases_deaths
+
+Here is the complete Dataflow:\
+**df_transform_cases_deaths**
+
+![df_transform_cases_deaths](Screenshots/df_transform_cases_deaths.png)
+   
+
 
     
 
