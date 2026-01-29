@@ -8,7 +8,7 @@ The processed data is published to Azure SQL Database and visualized through int
 
 ## **Project Architecture:**
 
-![project_architecture](Screenshots/Project_architecure.png)
+![project_architecture](Screenshots/data_arch1.png)
 
 ## **Dataset:** 
 We are using data from **European Centre for Disease Prevention and Control** through HTTP connector 
