@@ -153,7 +153,7 @@ Give this File as Input to Lookup Activity\
 1. Filter Data for **Europe** only.
 2. Remove columns : continent, rate_14_day
 3. Split indicator column (take indicator and daily_count column and pivot them in cases_count and deaths_count)
-4. Get country_code_2_digit and country_code_2_digit from the lookup file.
+4. Get country_code_2_digit and country_code_3_digit from the lookup file.
 
 We will perform all the above transformation using **Data Flow:** df_transform_cases_deaths.
 
@@ -187,6 +187,56 @@ Here is the complete Dataflow:\
 **df_transform_cases_deaths**
 
 ![df_transform_cases_deaths](Screenshots/df_transform_cases_deaths.png)
+
+#### **Create Pipeline for Data Flow execution:** 
+pl_df_process_cases_deaths
+- In the pipeline use Data Flow activity and select the above Data Flow
+
+### **Transformation of Hospital Admissions:**
+#### **Transformation Requirements:**
+1. Select required columns only : Remove URL, Rename date to reported_date, year_week to reported_year_week
+2. Get country_code_2_digit and country_code_3_digit from the lookup file.
+3. Select dim_date lookup file to get the week_start_date and week_end_date.
+4. Conditional split the data as Weekly and Daily data.
+5. Pivot Weekly data on **Weekly new hospital admissions per 100k** and **Weekly new ICU admissions per 100k** \
+   Daily data on **Daily hospital occupancy** and **Daily ICU occupancy**.
+6. Sink separately for Weekly and Daily data.
+
+We will perform all the above transformation using **Data Flow:** df_transform_hospital_admissions.
+
+#### **Data Flow Transformation Steps:**
+1. Select the cases_deaths file as source:
+
+        raw/ecdc/hospital_admissions/hospital_admissions.csv
+2. Select Activity : Remove URL, Rename date to reported_date, year_week to reported_year_week
+3. Get country_code_2_digit and country_code_3_digit from the lookup file.
+4. Conditional Split Transformation :\
+   Use below Split Condition:
+
+   ![split_condition](Screenshots/split_condition.png)
+
+5. Join Transformation:\
+   Join with Lookup File : [dim_date.ccv](Lookup_Files/dim_date.csv)
+6. Pivot Weekly data on **Weekly new hospital admissions per 100k** and **Weekly new ICU admissions per 100k** \
+   Daily data on **Daily hospital occupancy** and **Daily ICU occupancy**.
+7. Sink Transformation :\
+   **Weekly:**
+
+           processed/ecdc/hospitals_admissions_weekly
+
+   **Daily:**
+
+           processed/ecdc/hospitals_admissions_daily
+
+Complete Data Flow: **df_transform_hospital_admission**
+
+![df_transform_hospital_admission](Screenshots/df_transform_hospital_admission.png)
+
+           
+
+
+
+
    
 
 
