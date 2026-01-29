@@ -112,7 +112,38 @@ Here is the complete pipeline:
   Create Event based trigger and attach the above pipeline in that.\
   Execute the trigger:
   ![Trigger_pipeline](Screenshots/pipeline_success1.png)
-  
+
+### **Create Pipeline to Ingest ECDC Data (pl_ingest_ecdc_data):** 
+- **Lookup Activity:**\
+  We have on lookup file having the below details:
+  * Relative URL
+  * Sink File Name\
+So we can Ingest all the files from ECDC website.\
+The lookup file is a JSON file : ecdc_file_list_for_2_files2.json\
+Give this File as Input to Lookup Activity\
+[ecdc_file_list_for_2_files2.json](Lookup_Files/ecdc_file_list_for_2_files2.json)
+
+- **For Each Activity:**
+  * Get the output value from the Lookup Activity using the below Item:
+
+          @activity('Look for the ecdc details').output.value
+  * Create Dataset for HTTP Source and create a parameter for **relative_url** and use this parameter in connection of this dataset:
+    ![ds_http_ecdc_raw_csv](Screenshots/ds_http_ecdc_raw_csv.png)
+  * Create Dataset forSink ADLS Gen2 and create a parameter for **file_name** and use this parameter in connection of this dataset:
+    ![ds_dl_ecdc_raw_csv](Screenshots/ds_dl_ecdc_raw_csv.png)
+    
+  * Create Copy Activity : **Copy ECDC Data** inside For Each, Using the output from Lookup Activity
+    - Parameter value for Source:
+      
+      ![source_param1](Screenshots/source_param1.png)
+    - Parameter value for Sink:
+      
+      ![sink_param1](Screenshots/sink_param1.png)
+
+- **Complete Pipeline (pl_ingest_ecdc_data):**
+
+  ![pl_ingest_ecdc_data](Screenshots/pl_ingest_ecdc_data.png)
+    
 
       
   
