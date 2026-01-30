@@ -232,6 +232,12 @@ Complete Data Flow: **df_transform_hospital_admission**
 
 ![df_transform_hospital_admission](Screenshots/df_transform_hospital_admission.png)
 
+#### **Create Pipeline for Data Flow execution:** 
+pl_df_process_hospital_admissions
+- In the pipeline use Data Flow activity and select the above Data Flow
+
+## **Data Transformation Using Databricks:**
+
            
 
 
