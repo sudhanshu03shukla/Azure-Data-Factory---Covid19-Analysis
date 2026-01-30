@@ -238,6 +238,47 @@ pl_df_process_hospital_admissions
 
 ## **Data Transformation Using Databricks:**
 
+Open the databricks workspace we created and create an All Purpose cluster:
+> Azure Portal > Dashboard > Databricks Workspace > Launch > Compute > create compute
+
+### **To Enable Datsbricks to access data in ADLS Gen2:**
+
+Create Azure Service Principal:
+
+> Microsoft Intra > New app registration > Covid-reporting-app
+
+Copy these values: **DB_VARIABLE_VALUE**
+1. Application(application_id)
+2. Directory (directory_id)
+3. Certificate and secrets > new client secret. copy the values, Secret value(service_credential)
+4. Storage account name (storage_account)
+
+> [!IMPORTANT]
+> Save theseabove values somewhere on notebook, we will need them later.
+
+**Grant access for data lake to azure service principal:**
+> ADLS storage account > I am > add role assignment > Storage Blob Data Contributor > give access to covid-reporting-app
+
+### **Transformation of population_by_age.csv:**
+#### **Transformation Requirements:**
+1. Split the country code & age group
+2. Exclude all data other than 2019
+3. Remove non numeric data from percentage
+4. Pivot the data by age group
+5. Join to dim_country to get the country, 3 digit country code and the total population.
+
+Here is the Databricks notebook created for this transformation:\
+[transform_population_by_age_data](Scripts_notebooks/transform_population_by_age_data.dbc)
+
+### **Transformation of testing.csv:**
+#### **Transformation Requirements:**
+1. Join to dim_country to get the country, 3 digit country code and the total population.
+2. Join to dim_date to get the week start date and week end date.
+
+Here is the Databricks notebook created for this transformation:\
+[transform_testing_data](Scripts_notebooks/transform_testing_data.dbc)
+
+
            
 
 
