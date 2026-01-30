@@ -278,6 +278,30 @@ Here is the Databricks notebook created for this transformation:\
 Here is the Databricks notebook created for this transformation:\
 [transform_testing_data](Scripts_notebooks/transform_testing_data.dbc)
 
+### **Create a pipeline for executing Databricks notebooks:**
+Create Linked Service:
+> Pipeline > Compute > Databricks
+
+#### **Access Token:**
+> Databricks Workspace > Settings > Access Token > Create
+
+Create a pipeline and include 2 Databricks Notebook Activity.
+
+![databricks_pipeline_success](Screenshots/databricks_pipeline_success.png)
+
+## **Copy data to Azure SQl database:**
+* Login to Azure SQL : covid19-db
+* Create the tables : [Create_Table_Script](Scripts_notebookscreate_covid_tables_ddl.sql)
+
+#### **Create a pipeline:**
+**Copy Activity:**
+For sink create a link service and dataset.
+Use SQL authentication for linked service.
+
+Same activity for hospital admissions and testing data also.
+**pl_process_population_testing_data:**
+
+![pl_process_population_testing_data](Screenshots/pl_process_population_testing_data.png)
 
            
 
