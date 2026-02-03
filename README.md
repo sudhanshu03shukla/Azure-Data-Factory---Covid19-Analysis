@@ -303,11 +303,36 @@ Same activity for hospital admissions and testing data also.
 
 ![pl_process_population_testing_data](Screenshots/pl_process_population_testing_data.png)
 
-           
 
 
+## **Orchestrating the pipelines:**
+### **Orchestrating Pipeline for Population data(Azure Blob Storage):**
+**Create Trigger:**
+- tr_population_data_arrives:
+  Event based trigger which starts when the Population file arrives.
+**Create one orchestrated pipeline:** 
+- pl_execute_population_pipelines
+  Including these two pipelines for Population data:
+  1. pl_ingest_population_data
+  2. pl_process_population_data
+And attach the trigger with this pipeline.
+
+The orchestrated pipeline for Population data is :
+
+![pl_execute_population_pipelines](Screenshots/pl_execute_population_pipelines.png)
+
+### **Orchestrating Pipeline for ECDC data:**
+In this orchetration we will create depending triggers attached with the pipelines:
+
+**Create a trigger:**
+Tumbling Window trigger: **tr_ingest_ecdc_data**\
+Attach the pipeline : **pl_ingest_ecdc_data** with the above trigger.
+
+Create more triggers depening on tr_ingest_ecdc_data for other pipelines.\
+The complete Dependency flow of the triggers and pipelines will be as below:
 
 
+![Triggers_depencency](Screenshots/Triggers_depencency.png)
    
 
 
