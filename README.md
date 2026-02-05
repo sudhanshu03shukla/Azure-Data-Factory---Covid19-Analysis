@@ -1,3 +1,5 @@
+![covid_19_thumbnail](Screenshots/covid_19_thumbnail.png)
+
 # Azure-Data-Factory---Covid19-Analysis
 
 ## **Introduction:**
